@@ -7,6 +7,6 @@ const orderRouter = Router();
 
 orderRouter.post("/",OrderControler.placeOrder)
 
-orderRouter.get('/calculate',OrderControler.calculateRevenue)
+orderRouter.get('/revenue',OrderControler.calculateRevenue)
 
 export default orderRouter

@@ -5,20 +5,26 @@ import { IOrder } from './order.interface';
 const OrderSchema = new Schema<IOrder>({
     email: {
         type: String,
-        required: true
-    },
-    product: {
+        required: [true, "Email is required"],
+        match: [/\S+@\S+\.\S+/, "Invalid email format"],
+        trim: true,
+      },
+      product: {
         type: String,
-        required: true
-    },
-    quantity: {
+        required: [true, "Product ID is required"],
+        minlength: [24, "Invalid Product ID"], 
+        maxlength: [24, "Invalid Product ID"],
+      },
+      quantity: {
         type: Number,
-        required: true
-    },
-    totalPrice: {
+        required: [true, "Quantity is required"],
+        min: [1, "Quantity must be at least 1"], 
+      },
+      totalPrice: {
         type: Number,
-        required: true
-    },
+        required: [true, "Total price is required"],
+        min: [0, "Total price must be a positive number"], 
+      },
     
 
 },
